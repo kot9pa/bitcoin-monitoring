@@ -4,7 +4,6 @@
 3. Clear DB on shutdown
 4. Sendmail
 5. More filter options
-..
 
 # Сборка приложения:
 1. Клонировать репозиторий и перейти в корень приложения
@@ -20,23 +19,23 @@
 3. Альтернативная установка через Pipenv (необязательно)  
 `pip install pipenv`  
 `pipenv install`
-4. Запустить скрипт для мониторинга:
+4. Запустить скрипт для мониторинга:  
 `pythom src\main.py`
 
 # REST API:
 Web-server по адресу http://localhost:5000
 
-1. Получение записей
+1. Получение записей  
 `GET localhost:5000/get`
 
-Доступна фильтрация по полям: id, title (OR)
-`GET localhost:5000/get?id=1&title=BTCUSDT`
+Доступна фильтрация по полям: id, title (OR)  
+Пример: `GET localhost:5000/get?id=1&title=BTCUSDT`
 
-2. Добавление записи
+2. Добавление записи  
 `POST localhost:5000/add`
 
-Body:
-{
+Пример Body:  
+`{
     "title": "ETHUSDT",
     "price": 10000,
     "max_price": 11000,
@@ -44,13 +43,13 @@ Body:
     "date": "2024-09-23 11:22:33",
     "difference": 0,
     "total_amount": 0
-}
+}`
 
-3. Изменение записи по ID
+3. Изменение записи по ID  
 `PATCH localhost:5000/update?id={id}`
 
-Body:
-{
+Пример Body:  
+`{
     "title": "ETHUSDT",
     "price": 10000,
     "max_price": 11000,
@@ -58,10 +57,10 @@ Body:
     "date": "2024-09-23 11:22:33",
     "difference": 0,
     "total_amount": 0
-}
+}`
 
-4. Удаление записей
+4. Удаление записей  
 `DELETE localhost:5000/delete`
 
-Доступно удаление записи по полям: id
-`GET localhost:5000/delete?id=1`
+Доступно удаление записи по полям: id  
+Пример: `GET localhost:5000/delete?id=1`

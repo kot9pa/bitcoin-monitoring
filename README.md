@@ -1,8 +1,9 @@
 # TODO:
 1. Exchange class for cross-converting (ie BTH/ETH)
-2. Execution will block in main thread
+2. Execution will block in main thread (Ctlr-C or Ctrl-Break)
 3. Clear DB on shutdown
 4. Sendmail
+5. More filter options
 ..
 
 # Сборка приложения:
@@ -25,20 +26,42 @@
 # REST API:
 Web-server по адресу http://localhost:5000
 
-Получение всех записей
-`GET localhost:5000`
+1. Получение записей
+`GET localhost:5000/get`
 
-Получение записи по ID
-`GET localhost:5000/{id}`
+Доступна фильтрация по полям: id, title (OR)
+`GET localhost:5000/get?id=1&title=BTCUSDT`
 
-Добавление записи по ID
-`POST localhost:5000/{id}`
+2. Добавление записи
+`POST localhost:5000/add`
 
-Изменение записи по ID
-`PATCH localhost:5000/{id}`
+Body:
+{
+    "title": "ETHUSDT",
+    "price": 10000,
+    "max_price": 11000,
+    "min_price": 9000,
+    "date": "2024-09-23 11:22:33",
+    "difference": 0,
+    "total_amount": 0
+}
 
-Удаление записи по ID
-`DELETE localhost:5000/{id}`
+3. Изменение записи по ID
+`PATCH localhost:5000/update?id={id}`
 
-Удаление всех записей
-`DELETE localhost:5000`
+Body:
+{
+    "title": "ETHUSDT",
+    "price": 10000,
+    "max_price": 11000,
+    "min_price": 9000,
+    "date": "2024-09-23 11:22:33",
+    "difference": 0,
+    "total_amount": 0
+}
+
+4. Удаление записей
+`DELETE localhost:5000/delete`
+
+Доступно удаление записи по полям: id
+`GET localhost:5000/delete?id=1`

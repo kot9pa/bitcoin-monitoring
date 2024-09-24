@@ -6,7 +6,7 @@ WORKDIR /app_dir
 # Install & use pipenv
 COPY Pipfile Pipfile.lock ./
 RUN python -m pip install --upgrade pip
-RUN pip install pipenv && pipenv install --system --deploy
+RUN pip install pipenv && pipenv install --system
 
 COPY . .
 WORKDIR src
